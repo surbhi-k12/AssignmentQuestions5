@@ -1,0 +1,146 @@
+Q1.What is Exception in Java?
+
+Exception is an unwanted or unexpected event, which occurs during the execution of a program,
+ i.e. at run time, that disrupts the normal flow of the program’s instructions. Exceptions can be caught and handled by the program.
+ 
+ 
+ 
+ Q2.What is Exception Handling?
+ 
+ Exception Handling in Java is one of the effective means to handle the runtime errors so that the regular flow of the application can be preserved. 
+ Java Exception Handling is a mechanism to handle runtime errors such as ClassNotFoundException, IOException, SQLException, RemoteException, etc.
+ 
+ 
+ 
+ Q3.What is the difference between Checked and Unchecked Exceptions and Error?
+ 
+ Checked Exceptions in Java
+ 
+These are the exceptions that are checked at compile time. If some code within a method throws a checked exception, 
+then the method must either handle the exception or it must specify the exception using the throws keyword. In checked exceptions, 
+there are two types: fully checked and partially checked exceptions.
+ A fully checked exception is a checked exception where all its child classes are also checked, like IOException, and InterruptedException. 
+ A partially checked exception is a checked exception where some of its child classes are unchecked, like an Exception.
+ 
+ For example, consider the following Java program that opens the file at location “C:\test\a.txt” and prints the first three lines of it.
+ The program doesn’t compile, because the function main() uses FileReader(), and FileReader() throws a checked exception FileNotFoundException.
+ It also uses readLine() and close() methods, and these methods also throw checked exception IOException
+ 
+ Unchecked Exceptions in Java
+These are the exceptions that are not checked at compile time. In C++, all exceptions are unchecked,
+ so it is not forced by the compiler’s to either handle or specify the exception.
+ It is up to the programmers to be civilized and specify or catch the exceptions.
+ In Java, exceptions under Error and RuntimeException classes are unchecked exceptions, everything else under throwable is checked. 
+ 
+ unchecked exceptions are runtime exceptions that are not required to be caught or declared in a throws clause.
+ These exceptions are usually caused by programming errors, such as attempting to access an index out of bounds 
+ in an array or attempting to divide by zero
+ 
+ 
+ Here are some examples of unchecked exceptions in Java:
+
+1. ArrayIndexOutOfBoundsException: This exception is thrown when you attempt to access an array index that is out of bounds.
+2. NullPointerException: This exception is thrown when you attempt to access a null object reference.
+3. ArithmeticException: This exception is thrown when you attempt to divide by zero or perform an invalid arithmetic operation.
+
+Error
+An error is a subclass of Throwable that tells that something serious problem is existing and a 
+reasonable Java application should not try to catch that error. 
+ As these errors are abnormal conditions and should not occur, thus, error and its subclass are referred to as Unchecked Exceptions.
+ 
+ Errors cannot be solved by any handling techniques, whereas we can solve exceptions using some logic implementations.
+ So, when an error occurs, it causes termination of the program as errors cannot try to catch.
+ 
+ 
+ 
+ Q4.What are the difference between throw and throws in Java?
+ 
+ The throw keyword is used to throw an exception explicitly. It can throw only one exception at a time.
+ The throws keyword can be used to declare multiple exceptions, separated by a comma.
+ 
+ Throw keyword throws the exception explicitly from a method or a block of code,
+ whereas the throws keyword is used in the signature of the method.
+ 
+ 
+ 
+ Q5.What is multithreading in Java? mention its advantages
+ 
+ Multithreading in Java is a process of executing multiple threads simultaneously.
+
+A thread is a lightweight sub-process, the smallest unit of processing. Multiprocessing and multithreading, both are used to achieve multitasking.
+
+However, we use multithreading than multiprocessing because threads use a shared memory area. 
+They don't allocate separate memory area so saves memory, and context-switching between the threads takes less time than process.
+
+Advantages of Java Multithreading :
+
+1) It doesn't block the user because threads are independent and you can perform multiple operations at the same time.
+
+2) You can perform many operations together, so it saves time.
+
+3) Threads are independent, so it doesn't affect other threads if an exception occurs in a single thread.
+
+
+
+Q6.Write a program to create and call a custom exception
+
+class MyException extends Exception {
+    public MyException(String s)
+    {
+        // Call constructor of parent Exception
+        super(s);
+    }
+}
+ 
+
+public class Main {
+   
+    public static void main(String args[])
+    {
+        try {
+            // Throw an object of user defined exception
+            throw new MyException("Welcome");
+        }
+        catch (MyException ex) {
+            System.out.println("Caught");
+ 
+            // Print the message from MyException object
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+
+
+Q7.How can you handle exceptions in Java? 
+
+The "catch" block is used to handle the exception. It must be preceded by try block which means we can't use catch block alone. 
+It can be followed by finally block later. The "finally" block is used to execute the necessary code of the program.
+
+
+Q8.What is Thread in Java?
+
+A Thread is a very light-weighted process,
+ or we can say the smallest part of the process that allows a program to operate more efficiently by running multiple tasks simultaneously.
+ 
+ 
+ Q9. What are the two ways of implementing thread in Java?
+ 
+A thread can programmatically be created by:
+
+Implementing the java.lang.Runnable interface.
+Extending the java.lang.Thread class.
+
+
+
+Q10.What do you mean by garbage collection?
+
+
+Garbage Collection is process of reclaiming the runtime unused memory automatically. In other words, it is a way to destroy the unused objects.
+
+Advantage of Garbage Collection
+
+It makes java memory efficient because garbage collector removes the unreferenced objects from heap memory.
+It is automatically done by the garbage collector(a part of JVM) so we don't need to make extra efforts.
+
+
+
